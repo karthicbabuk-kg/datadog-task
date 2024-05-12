@@ -1,32 +1,23 @@
-Imports and Initial State:
+Imports: The code imports necessary modules from React.
 
-I import necessary modules from React and my CSS file.
-I define the initial state using the useState hook. monitors state stores an array of monitor objects, and formData state stores the data entered in the form.
+API Key: It defines a constant apiKey that holds your Datadog API key. This key is used for authentication when making API requests to Datadog.
 
-createMonitor Function:
+State Hooks: State hooks like useState and useEffect are utilized to manage component state and perform side effects respectively.
 
-This function is triggered when the form is submitted.
-It prevents the default form submission behavior.
-Simulating an API call delay using setTimeout.
-Inside the timeout, I create a new monitor object using the form data and a random ID.
-I update the monitors state by adding the new monitor to the existing array.
-I clear the form fields by resetting the formData state.
-handleInputChange Function:
+State Initialization: State variables are initialized to hold monitor data fetched from Datadog API and form data for creating new monitors.
 
-This function is triggered when any input field in the form changes.
-It updates the corresponding field in the formData state with the new value entered by the user.
+Fetch Monitors: An effect hook (useEffect) is used to fetch monitors from the Datadog API when the component mounts. The fetched data is stored in the monitors state variable.
 
-Rendering:
+Form Handling Functions: Functions for handling form input changes (handleInputChange) and form submission (handleSubmit) are defined. These functions update the form data state (formData) accordingly.
 
-The App component renders a table to display the monitor data.
-I map through the monitors array and render each monitor's details in a table row.
-Below the table, I render a button to create a new monitor and a form for users to input monitor details.
-Each input field in the form is controlled by its corresponding value in the formData state.
-When the form is submitted, it triggers the createMonitor function.
+Monitor Table: A table is rendered to display the fetched monitor data. Each row represents a monitor and displays its name, message, type, and query.
 
-Environment Variables (.env file):
+Create Monitor Button: A button is provided to trigger the display of the form for creating a new monitor.
 
-The .env file is used to store environment variables.
-I've utilized .env in a previous version of the code where DataDog API URL was stored as an environment variable (REACT_APP_DATADOG_API_URL).
+Create Monitor Form: A form is rendered with input fields for message, name, query, and type. This form allows users to create new monitors in Datadog.
 
-Overall, this project simulates the process of creating monitors in DataDog (or any other monitoring tool) by allowing users to input monitor details via a form, which are then displayed in a table after submission. The .env file can be used to store sensitive data or configuration variables.
+Event Handlers: Event handlers are attached to form inputs and submission button to update the form data state and trigger the monitor creation process.
+
+Monitor Creation: When the form is submitted, a POST request is sent to the Datadog API to create a new monitor using the provided form data. Upon successful creation, the newly created monitor is appended to the existing monitor list displayed in the table.
+
+Render JSX: Finally, JSX elements are rendered to display the UI components including the monitor table, create monitor button, and create monitor form.
