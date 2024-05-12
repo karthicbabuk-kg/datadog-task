@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./App.css"
-const apiKey = '#######';
+const apiKey = '#######';//API key is private so i removed
 const App = () => {
   const [monitors, setMonitors] = useState([]);
 
